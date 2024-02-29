@@ -1,0 +1,36 @@
+# Lint, test & deploy on push
+name: Lint, Test & Deploy
+on: push
+jobs:
+  Lint:
+    name: Lint Application
+    runs-on: ubuntu-latest
+    steps:
+      - name: Downloads code
+        uses: actions/checkout
+      - name: Install Node
+        uses: actions/setup-node@v3
+      - name: Runs Linter
+        run: npm run lint
+  Test:
+    needs: Lint
+    name: Test Application
+    runs-on: ubuntu-latest
+    steps:
+      - name: Downloads code
+        uses: actions/checkout
+      - name: Install Node
+        uses: actions/setup-node@v3
+      - name: Runs Tests
+        run: npm run test
+  Deploy:
+    needs: Test
+    name: Deploy Application
+    runs-on: ubuntu-latest
+    steps:
+      - name: Downloads code
+        uses: actions/checkout
+      - name: Install Node
+        uses: actions/setup-node@v3
+      - name: Deploy to application
+        run: echo "Deploying to the cloud......."
