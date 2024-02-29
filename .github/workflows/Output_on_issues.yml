@@ -1,0 +1,11 @@
+name: Print Event Details on 'issues'
+on: issues
+jobs:
+  PrintIssueData:
+    runs-on: ubuntu-latest
+    name: Print the event details for the issue.
+    steps:
+      - name: Downloads Code
+        uses: actions/checkout@v3
+      - name: Print Context
+        run: echo "${{toJSON(github)}}"
