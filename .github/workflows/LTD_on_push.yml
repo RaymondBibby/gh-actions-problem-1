@@ -9,6 +9,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Install Node
         uses: actions/setup-node@v3
+      - name: NPM Install
+        run: npm ci
       - name: Runs Linter
         run: npm run lint
   Test:
@@ -20,6 +22,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Install Node
         uses: actions/setup-node@v3
+      - name: NPM Install
+        run: npm ci
       - name: Runs Tests
         run: npm run test
   Deploy:
